@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to the Freelance App</h1>
+<p>Here are some of our freelancers:</p>
+<div class="card-container">
+    {% for user in users.values() %}
+    <div class="card">
+        <h2>{{ user.username }}</h2>
+        <p><strong>Job:</strong> {{ user.job }}</p>
+        <p><strong>Contact:</strong> {{ user.contact }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+        <p><strong>Average Rating:</strong> 
+            {% if user.ratings %}
+                {{ "%.1f"|format(user.ratings|sum / user.ratings|length) }}
+            {% else %}
+                No ratings yet
+            {% endif %}
+        </p>
+        <form action="{{ url_for('rate') }}" method="post">
+            <input type="hidden" name="username" value="{{ user.username }}">
+            <label for="rating">Rate:</label>
+            <select name="rating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

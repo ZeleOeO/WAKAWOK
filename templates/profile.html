@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Profile</h1>
+<form method="post">
+    <label for="job">Job:</label>
+    <select id="job" name="job">
+        {% for job in jobs %}
+            <option value="{{ job }}" {% if job == user.job %}selected{% endif %}>{{ job }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="contact">Email:</label>
+    <input type="text" id="contact" name="contact" value="{{ user.contact }}">
+    
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" value="{{ user.phone }}" placeholder="+234xxxxxxxxxx">
+    
+    <button type="submit">Update</button>
+</form>
+{% endblock %}

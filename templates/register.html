@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Register</h1>
+<form method="post">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    
+    <label for="job">Job:</label>
+    <select id="job" name="job">
+        {% for job in jobs %}
+            <option value="{{ job }}">{{ job }}</option>
+        {% endfor %}
+    </select>
+    
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+    
+    <label for="phone">Phone Number:</label>
+    <input type="text" id="phone" name="phone" placeholder="+234xxxxxxxxxx">
+    
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
