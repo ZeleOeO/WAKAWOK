@@ -3,12 +3,9 @@ from flask import Flask, request
 app = Flask(__name__)
 
 
-
 def create_profile(name, job, contact, phone):
     profile = {"name": name, "job": job, "contact": contact, "phone": phone}
     return "Profile created successfully."
-
-
 
 
 def get_profiles():
@@ -71,4 +68,4 @@ def ussd_callback():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
